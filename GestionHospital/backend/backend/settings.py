@@ -62,7 +62,9 @@ SPECTACULAR_SETTINGS = {
     'ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE': True,  # Añade opciones explícitas de null/blank a los enumerados.
     'POSTPROCESSING_HOOKS': [],  # Lista de funciones para modificar el esquema después de generarlo.
 }
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

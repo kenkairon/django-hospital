@@ -101,7 +101,16 @@ Educativo y de Aprendizaje Personal
         'ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE': True,  # Añade opciones explícitas de null/blank a los enumerados.
         'POSTPROCESSING_HOOKS': [],  # Lista de funciones para modificar el esquema después de generarlo.
     }
-
+    MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
 # Creación del Modelo 
 
 11. creamos el archivo en api_hospital/models.py
