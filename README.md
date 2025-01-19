@@ -194,40 +194,38 @@ Educativo y de Aprendizaje Personal
 
 16. Agregamos todas las aplicaciones y configuraciones al backend/settings.py 
     ```bash
-  # Application definition
+        INSTALLED_APPS = [
+            'django.contrib.admin',
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
+            'django.contrib.sessions',
+            'django.contrib.messages',
+            'django.contrib.staticfiles',
+            'corsheaders',
+            'rest_framework',
+            'drf_spectacular',
+            'api_hospital',
+            'docs',
+        ]
 
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'corsheaders',
-        'rest_framework',
-        'drf_spectacular',
-        'api_hospital',
-        'docs',
-    ]
+        REST_FRAMEWORK = {
+            'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+        }
 
-    REST_FRAMEWORK = {
-        'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    }
-
-    SPECTACULAR_SETTINGS = {
-        'TITLE': 'Hospital Management API',
-        'DESCRIPTION': 'API para la gestión de pacientes, médicos y citas en un hospital.',
-        'VERSION': '1.0.0',
-        'SERVE_INCLUDE_SCHEMA': False,  # Si False, no incluye el esquema JSON directamente en el endpoint /schema/
-        'SCHEMA_PATH_PREFIX': '/api/',  # Prefijo para limitar qué endpoints incluir en la documentación.
-        'SORT_OPERATIONS': True,  # Ordena las operaciones alfabéticamente en Swagger UI.
-        'SORT_TAGS': True,  # Ordena las etiquetas de los endpoints alfabéticamente.
-        'COMPONENT_SPLIT_REQUEST': True,  # Separa los serializers de solicitud y respuesta si son diferentes.
-    
-        'DISABLE_ERRORS_AND_WARNINGS': False,  # Activa/desactiva errores y advertencias en la generación del esquema.
-        'ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE': True,  # Añade opciones explícitas de null/blank a los enumerados.
-        'POSTPROCESSING_HOOKS': [],  # Lista de funciones para modificar el esquema después de generarlo.
-    }
+        SPECTACULAR_SETTINGS = {
+            'TITLE': 'Hospital Management API',
+            'DESCRIPTION': 'API para la gestión de pacientes, médicos y citas en un hospital.',
+            'VERSION': '1.0.0',
+            'SERVE_INCLUDE_SCHEMA': False,  # Si False, no incluye el esquema JSON directamente en el endpoint /schema/
+            'SCHEMA_PATH_PREFIX': '/api/',  # Prefijo para limitar qué endpoints incluir en la documentación.
+            'SORT_OPERATIONS': True,  # Ordena las operaciones alfabéticamente en Swagger UI.
+            'SORT_TAGS': True,  # Ordena las etiquetas de los endpoints alfabéticamente.
+            'COMPONENT_SPLIT_REQUEST': True,  # Separa los serializers de solicitud y respuesta si son diferentes.
+        
+            'DISABLE_ERRORS_AND_WARNINGS': False,  # Activa/desactiva errores y advertencias en la generación del esquema.
+            'ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE': True,  # Añade opciones explícitas de null/blank a los enumerados.
+            'POSTPROCESSING_HOOKS': [],  # Lista de funciones para modificar el esquema después de generarlo.
+        }
 
 17. creamos la urls.py en docs/urls.py 
     ```bash
