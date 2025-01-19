@@ -1,0 +1,7 @@
+<h1>Lista de Médicos</h1>
+<ul>
+    {% for medico in medicos %}
+    <li>{{ medico.nombre }} {{ medico.apellido }} - {{ medico.especialidad }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'index' %}">Volver al inicio</a>

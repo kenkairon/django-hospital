@@ -1,0 +1,7 @@
+<h1>Detalle de la Cita</h1>
+<p>Paciente: {{ cita.paciente.nombre }} {{ cita.paciente.apellido }}</p>
+<p>Médico: {{ cita.medico.nombre }} {{ cita.medico.apellido }}</p>
+<p>Fecha y Hora: {{ cita.fecha_hora }}</p>
+<p>Motivo: {{ cita.motivo }}</p>
+<p>Estado: {{ cita.estado }}</p>
+<a href="{% url 'citas_list' %}">Volver</a>

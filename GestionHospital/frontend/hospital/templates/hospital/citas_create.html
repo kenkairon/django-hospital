@@ -1,0 +1,28 @@
+<h1>Crear Cita</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label>Paciente:</label>
+    <select name="paciente">
+        {% for paciente in pacientes %}
+        <option value="{{ paciente.id }}">{{ paciente.nombre }} {{ paciente.apellido }}</option>
+        {% endfor %}
+    </select>
+    <label>Médico:</label>
+    <select name="medico">
+        {% for medico in medicos %}
+        <option value="{{ medico.id }}">{{ medico.nombre }} {{ medico.apellido }}</option>
+        {% endfor %}
+    </select>
+    <label>Fecha y Hora:</label>
+    <input type="datetime-local" name="fecha_hora" required>
+    <label>Motivo:</label>
+    <textarea name="motivo" required></textarea>
+    <label>Estado:</label>
+    <select name="estado">
+        <option value="Pendiente">Pendiente</option>
+        <option value="Completada">Completada</option>
+        <option value="Cancelada">Cancelada</option>
+    </select>
+    <button type="submit">Crear</button>
+</form>
+<a href="{% url 'citas_list' %}">Volver</a>

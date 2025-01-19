@@ -1,0 +1,765 @@
+openapi: 3.0.3
+info:
+  title: Hospital Management API
+  version: 1.0.0
+  description: API para la gestión de pacientes, médicos y citas en un hospital.
+  contact:
+    name: Soporte Técnico
+    email: soporte@hospital.com
+    url: https://hospital.com
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+paths:
+  /api/citas/:
+    get:
+      operationId: citas_list
+      tags:
+      - citas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cita'
+          description: ''
+    post:
+      operationId: citas_create
+      tags:
+      - citas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cita'
+          description: ''
+  /api/citas/{id}/:
+    get:
+      operationId: citas_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this cita.
+        required: true
+      tags:
+      - citas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cita'
+          description: ''
+    put:
+      operationId: citas_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this cita.
+        required: true
+      tags:
+      - citas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CitaRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cita'
+          description: ''
+    patch:
+      operationId: citas_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this cita.
+        required: true
+      tags:
+      - citas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCitaRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCitaRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCitaRequest'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cita'
+          description: ''
+    delete:
+      operationId: citas_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this cita.
+        required: true
+      tags:
+      - citas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/medicos/:
+    get:
+      operationId: medicos_list
+      tags:
+      - medicos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Medico'
+          description: ''
+    post:
+      operationId: medicos_create
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+          description: ''
+  /api/medicos/{id}/:
+    get:
+      operationId: medicos_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this medico.
+        required: true
+      tags:
+      - medicos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+          description: ''
+    put:
+      operationId: medicos_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this medico.
+        required: true
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MedicoRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+          description: ''
+    patch:
+      operationId: medicos_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this medico.
+        required: true
+      tags:
+      - medicos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMedicoRequest'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Medico'
+          description: ''
+    delete:
+      operationId: medicos_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this medico.
+        required: true
+      tags:
+      - medicos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/pacientes/:
+    get:
+      operationId: pacientes_list
+      tags:
+      - pacientes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paciente'
+          description: ''
+    post:
+      operationId: pacientes_create
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+          description: ''
+  /api/pacientes/{id}/:
+    get:
+      operationId: pacientes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this paciente.
+        required: true
+      tags:
+      - pacientes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+          description: ''
+    put:
+      operationId: pacientes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this paciente.
+        required: true
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PacienteRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+          description: ''
+    patch:
+      operationId: pacientes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this paciente.
+        required: true
+      tags:
+      - pacientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPacienteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPacienteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPacienteRequest'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+          description: ''
+    delete:
+      operationId: pacientes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this paciente.
+        required: true
+      tags:
+      - pacientes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Cita:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        paciente:
+          allOf:
+          - $ref: '#/components/schemas/Paciente'
+          readOnly: true
+        medico:
+          allOf:
+          - $ref: '#/components/schemas/Medico'
+          readOnly: true
+        fecha_hora:
+          type: string
+          format: date-time
+        motivo:
+          type: string
+        estado:
+          enum:
+          - Pendiente
+          - Completada
+          - Cancelada
+          type: string
+          description: |-
+            * `Pendiente` - Pendiente
+            * `Completada` - Completada
+            * `Cancelada` - Cancelada
+          x-spec-enum-id: d43e5d4ce59ad86e
+      required:
+      - estado
+      - fecha_hora
+      - id
+      - medico
+      - motivo
+      - paciente
+    CitaRequest:
+      type: object
+      properties:
+        fecha_hora:
+          type: string
+          format: date-time
+        motivo:
+          type: string
+          minLength: 1
+        estado:
+          enum:
+          - Pendiente
+          - Completada
+          - Cancelada
+          type: string
+          description: |-
+            * `Pendiente` - Pendiente
+            * `Completada` - Completada
+            * `Cancelada` - Cancelada
+          x-spec-enum-id: d43e5d4ce59ad86e
+      required:
+      - estado
+      - fecha_hora
+      - motivo
+    Medico:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 100
+        apellido:
+          type: string
+          maxLength: 100
+        especialidad:
+          type: string
+          maxLength: 100
+        telefono:
+          type: string
+          maxLength: 15
+        correo:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - apellido
+      - correo
+      - especialidad
+      - id
+      - nombre
+      - telefono
+    MedicoRequest:
+      type: object
+      properties:
+        nombre:
+          type: string
+          minLength: 1
+          maxLength: 100
+        apellido:
+          type: string
+          minLength: 1
+          maxLength: 100
+        especialidad:
+          type: string
+          minLength: 1
+          maxLength: 100
+        telefono:
+          type: string
+          minLength: 1
+          maxLength: 15
+        correo:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+      required:
+      - apellido
+      - correo
+      - especialidad
+      - nombre
+      - telefono
+    Paciente:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 100
+        apellido:
+          type: string
+          maxLength: 100
+        fecha_nacimiento:
+          type: string
+          format: date
+        sexo:
+          enum:
+          - M
+          - F
+          type: string
+          description: |-
+            * `M` - Masculino
+            * `F` - Femenino
+          x-spec-enum-id: 5edddcad0ff36e3d
+        telefono:
+          type: string
+          maxLength: 15
+        direccion:
+          type: string
+      required:
+      - apellido
+      - direccion
+      - fecha_nacimiento
+      - id
+      - nombre
+      - sexo
+      - telefono
+    PacienteRequest:
+      type: object
+      properties:
+        nombre:
+          type: string
+          minLength: 1
+          maxLength: 100
+        apellido:
+          type: string
+          minLength: 1
+          maxLength: 100
+        fecha_nacimiento:
+          type: string
+          format: date
+        sexo:
+          enum:
+          - M
+          - F
+          type: string
+          description: |-
+            * `M` - Masculino
+            * `F` - Femenino
+          x-spec-enum-id: 5edddcad0ff36e3d
+        telefono:
+          type: string
+          minLength: 1
+          maxLength: 15
+        direccion:
+          type: string
+          minLength: 1
+      required:
+      - apellido
+      - direccion
+      - fecha_nacimiento
+      - nombre
+      - sexo
+      - telefono
+    PatchedCitaRequest:
+      type: object
+      properties:
+        fecha_hora:
+          type: string
+          format: date-time
+        motivo:
+          type: string
+          minLength: 1
+        estado:
+          enum:
+          - Pendiente
+          - Completada
+          - Cancelada
+          type: string
+          description: |-
+            * `Pendiente` - Pendiente
+            * `Completada` - Completada
+            * `Cancelada` - Cancelada
+          x-spec-enum-id: d43e5d4ce59ad86e
+    PatchedMedicoRequest:
+      type: object
+      properties:
+        nombre:
+          type: string
+          minLength: 1
+          maxLength: 100
+        apellido:
+          type: string
+          minLength: 1
+          maxLength: 100
+        especialidad:
+          type: string
+          minLength: 1
+          maxLength: 100
+        telefono:
+          type: string
+          minLength: 1
+          maxLength: 15
+        correo:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+    PatchedPacienteRequest:
+      type: object
+      properties:
+        nombre:
+          type: string
+          minLength: 1
+          maxLength: 100
+        apellido:
+          type: string
+          minLength: 1
+          maxLength: 100
+        fecha_nacimiento:
+          type: string
+          format: date
+        sexo:
+          enum:
+          - M
+          - F
+          type: string
+          description: |-
+            * `M` - Masculino
+            * `F` - Femenino
+          x-spec-enum-id: 5edddcad0ff36e3d
+        telefono:
+          type: string
+          minLength: 1
+          maxLength: 15
+        direccion:
+          type: string
+          minLength: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+servers:
+- url: http://localhost:8000
+  description: Servidor de desarrollo
+- url: https://api.hospital.com
+  description: Servidor de producción
+tags:
+- name: Pacientes
+  description: Operaciones relacionadas con los pacientes
+- name: Médicos
+  description: Gestión de los médicos y sus especialidades
+- name: Citas
+  description: Administración de citas médicas
+externalDocs:
+  description: Documentación externa
+  url: https://docs.hospital.com

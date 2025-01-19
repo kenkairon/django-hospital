@@ -1,0 +1,9 @@
+<h1>Lista de Citas</h1>
+<a href="{% url 'citas_create' %}">Crear Nueva Cita</a>
+<ul>
+    {% for cita in citas %}
+    <li>
+        <a href="{% url 'citas_detail' cita.id %}">{{ cita.motivo }} - {{ cita.fecha_hora }}</a>
+    </li>
+    {% endfor %}
+</ul>
