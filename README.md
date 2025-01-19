@@ -159,7 +159,7 @@ Educativo y de Aprendizaje Personal
         queryset = Cita.objects.all()
         serializer_class = CitaSerializer
 
-14. Agregamos al proyecto api_hospital/urls.py
+13. Agregamos al proyecto api_hospital/urls.py
     ```bash	
     from django.urls import path, include
     from rest_framework.routers import DefaultRouter
@@ -173,7 +173,7 @@ Educativo y de Aprendizaje Personal
     urlpatterns = [
         path('api/', include(router.urls)),
     ]
-15. api_hospital/admin.py
+14. api_hospital/admin.py
     ```bash
     from django.contrib import admin
     from .models import Paciente, Medico, Cita
@@ -182,17 +182,17 @@ Educativo y de Aprendizaje Personal
     admin.site.register(Medico)
     admin.site.register(Cita)
 
-16. migrar en la base de datos
+15. migrar en la base de datos
     ```bash 
     python manage.py migrate
     python manage.py makemigrations
     python manage.py migrate
 
-15. Creamos un aplicacion en docs
+16. Creamos un aplicacion en docs
     ```bash	
     python manage.py startapp docs
 
-16. Agregamos todas las aplicaciones y configuraciones al backend/settings.py 
+17. Agregamos todas las aplicaciones y configuraciones al backend/settings.py 
     ```bash
         INSTALLED_APPS = [
             'django.contrib.admin',
@@ -227,7 +227,7 @@ Educativo y de Aprendizaje Personal
             'POSTPROCESSING_HOOKS': [],  # Lista de funciones para modificar el esquema después de generarlo.
         }
 
-17. creamos la urls.py en docs/urls.py 
+18. creamos la urls.py en docs/urls.py 
     ```bash
     from django.urls import path
     from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
@@ -239,7 +239,7 @@ Educativo y de Aprendizaje Personal
         path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     ]
 
-18. Ingresamos la nueva url en backend/urls.py 
+19. Ingresamos la nueva url en backend/urls.py 
     ```bash 
     from django.contrib import admin
     from django.urls import path,include
@@ -249,7 +249,7 @@ Educativo y de Aprendizaje Personal
         path('', include('docs.urls')), 
     ]
 
-19. Creamos un .env en el archivo principal
+20. Creamos un .env en el archivo principal
     ```bash
     DATABASE_NAME=test3
     DATABASE_USER=postgres
@@ -257,15 +257,15 @@ Educativo y de Aprendizaje Personal
     DATABASE_HOST=localhost
     DATABASE_PORT=5432
 
-20. Instalamos django-decouple
+21. Instalamos django-decouple
     ```bash
     pip install django-decouple
 
-21. Nos vamos al principio antes del crud y guardamos la dependecia
+22. Nos vamos al principio antes del crud y guardamos la dependecia
     ```bash
     pip freeze > requirements.txt
 
-22. en el crud/settings.py configuramos la base de datos en postgrest
+23. en el crud/settings.py configuramos la base de datos en postgrest
     ```bash
     from decouple import config
     DATABASES = {
@@ -279,19 +279,19 @@ Educativo y de Aprendizaje Personal
         }
     }
 
-23. Generamos el proyecto frontend
+24. Generamos el proyecto frontend
     ```bash
     django-admin startproject frontend
 
-24. Entramos a frontend
+25. Entramos a frontend
     ```bash
     cd frontend
 
-25. Creamos la aplicación 
+26. Creamos la aplicación 
      ```bash
     python manage.py startapp hospital 
 
-26. frontend/settings.py 
+27. frontend/settings.py 
     ```bash	
     # Application definition
 
@@ -305,7 +305,7 @@ Educativo y de Aprendizaje Personal
         'hospital',
     ]
 
-24. frontend/urls.py
+28. frontend/urls.py
     ```bash	
     from django.contrib import admin
     from django.urls import path, include
@@ -314,7 +314,7 @@ Educativo y de Aprendizaje Personal
         path('admin/', admin.site.urls),
         path('', include('hospital.urls')),
     ]
-25. frontend/hospital/
+29. frontend/hospital/
     ```bash
     import requests
     from django.shortcuts import render, redirect
@@ -356,7 +356,7 @@ Educativo y de Aprendizaje Personal
         medicos = response.json()
         return render(request, 'hospital/medicos_list.html', {'medicos': medicos})
 
-26. frontend/hospital/urls.py
+30. frontend/hospital/urls.py
     ```bash
     from django.urls import path
     from . import views
