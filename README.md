@@ -39,9 +39,11 @@ Educativo y de Aprendizaje Personal
     requests==2.32.3
     rpds-py==0.22.3
     sqlparse==0.5.3
+    typing_extensions==4.12.2
     tzdata==2024.2
     uritemplate==4.1.1
     urllib3==2.3.0
+
     
         
 4. Actualizamos los pip
