@@ -382,3 +382,8 @@ Educativo y de Aprendizaje Personal
         path('citas/create/', views.citas_create, name='citas_create'),
         path('medicos/', views.medicos_list, name='medicos_list'),
     ]
+
+31. Hacemos correr el Servidor backend http://127.0.0.1:8000/swagger-ui/ y el servidor del frontend http://127.0.0.1:8080/
+    ```bash
+    python manage.py runserver http://127.0.0.1:8000
+    python manage.py runserver http://127.0.0.1:8080
