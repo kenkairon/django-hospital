@@ -253,10 +253,15 @@ Educativo y de Aprendizaje Personal
     from django.contrib import admin
     from django.urls import path,include
 
+    from django.contrib import admin
+    from django.urls import path, include
+
     urlpatterns = [
         path('admin/', admin.site.urls),
-        path('', include('docs.urls')), 
+        path('', include('api_hospital.urls')),
+        path('', include('docs.urls')),
     ]
+
 
 20. Creamos un .env en el archivo principal
     ```bash
